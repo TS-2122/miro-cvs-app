@@ -1,11 +1,14 @@
 {
+  "homepage": "https://TS-2122.github.io/miro-cvs-app",
   "name": "miro-cvs-app",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "mirotone": "5",
@@ -14,6 +17,7 @@
   },
   "devDependencies": {
     "vite": "3.0.3",
-    "@vitejs/plugin-react": "^2.2.0"
+    "@vitejs/plugin-react": "^2.2.0",
+    "gh-pages": "^6.3.0"
   }
 }

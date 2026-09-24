@@ -19,6 +19,7 @@ const allHtmlEntries = fs
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/miro-cvs-app/',
   build: {
     rollupOptions: {
       input: allHtmlEntries,

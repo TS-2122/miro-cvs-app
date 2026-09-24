@@ -6,13 +6,19 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   display: flex;
 }
 
 #root {
   width: 100%;
-  overflow: auto;
+  height: 100%;
+  overflow-y: auto;
   padding: var(--space-medium);
 }
 
