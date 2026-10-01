@@ -273,8 +273,12 @@ const App = () => {
       return;
     }
 
+    const viewport = await miro.board.viewport.get();
+    const viewportCenterX = viewport.x + viewport.width / 2;
+    const viewportCenterY = viewport.y + viewport.height / 2;
+
     const spot = await miro.board.findEmptySpace({
-      x: 0, y: 0, width: tableW + 40, height: tableH + 40, offset: 60,
+      x: viewportCenterX, y: viewportCenterY, width: tableW + 40, height: tableH + 40, offset: 60,
     });
 
     const frame = await miro.board.createFrame({
