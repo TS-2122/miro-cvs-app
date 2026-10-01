@@ -227,6 +227,7 @@ const App = () => {
 
   const handleAddToBoard = async () => {
     setStatus('saving');
+    try {
 
     const validNeeds = needs.filter((n) => n.name && n.name.trim() !== '');
     const tableW = getTableW(outputMode);
@@ -283,6 +284,11 @@ const App = () => {
     resetForm();
     setStatus('done');
     setTimeout(() => setStatus('idle'), 2000);
+    } catch (err) {
+      console.error('CVS Calculator - failed to save to board:', err);
+      setStatus('idle');
+      alert('Something went wrong saving to the board. Check the browser console (F12) for details, and try again.');
+    }
   };
 
   return (
