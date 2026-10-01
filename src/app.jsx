@@ -37,19 +37,28 @@ const App = () => {
   const [status, setStatus] = useState('idle');
   const [editingFrameId, setEditingFrameId] = useState(null);
 
-  useEffect(() => {
+    useEffect(() => {
     const handler = async (event) => {
+      console.log('CVS Calculator - selection:update fired', event);
       const items = event.items || [];
       const frame = items.find((i) => i.type === 'frame');
-      if (!frame) return;
+      if (!frame) {
+        console.log('CVS Calculator - no frame in selection');
+        return;
+      }
+      console.log('CVS Calculator - frame selected, id:', frame.id);
       const registry = (await miro.board.getAppData(REGISTRY_KEY)) || [];
+      console.log('CVS Calculator - registry contents:', registry);
       const entry = registry.find((r) => r.frameId === frame.id);
       if (entry) {
+        console.log('CVS Calculator - match found, loading into panel');
         setEditingFrameId(frame.id);
         setOutputMode(entry.mode || 'comparison');
         setCustomer(entry.customer);
         setProcess(entry.process);
         setNeeds(entry.needs.map((n) => ({ ...n, value: n.value === 0 ? '' : n.value })));
+      } else {
+        console.log('CVS Calculator - no registry entry matches this frame id');
       }
     };
     miro.board.ui.on('selection:update', handler);
