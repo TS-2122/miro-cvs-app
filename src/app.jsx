@@ -337,7 +337,7 @@ const App = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
             <span style={{ fontSize: 11, color: COLORS.inkMuted, width: 44 }}>Current</span>
             <input
-              type="range" min="0" max="1" step="0.5"
+              type="range" min="0" max="1" step="0.1"
               value={n.curPerf}
               onChange={(e) => updateNeed(i, 'curPerf', e.target.value)}
               style={{ flex: 1 }}
@@ -347,7 +347,7 @@ const App = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 11, color: COLORS.inkMuted, width: 44 }}>Future</span>
             <input
-              type="range" min="0" max="1" step="0.5"
+              type="range" min="0" max="1" step="0.1"
               value={n.futPerf}
               onChange={(e) => updateNeed(i, 'futPerf', e.target.value)}
               style={{ flex: 1 }}
